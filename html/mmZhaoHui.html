@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>密码找回</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <style>
+        body{
+          width: 100%;
+          background-image: url("../image/backgroud1.png");
+          background-size: cover;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          z-index:1;
+        }
+        body:after{
+          content: "";
+          width:100%;
+          height:100%;
+          position: absolute;
+          left:0;
+          top:0;
+          background: inherit;
+          filter: blur(3px);
+          z-index:-1;
+        }
+        #main{
+          width: 100%;
+          height: 100%;
+        }
+        #header{
+          background-color:rgba(255,255,255,0.4);
+          width: 100%;
+          height: 55px;
+        }
+        .return{
+          height: 55px;
+          width: 20%;
+          background: url(../image/icon/back.png) no-repeat 15px 15px;
+          background-size: auto 25px;
+          float: left;
+        }
+        #header span{
+          width: 60%;
+          text-align: center;
+          color: #ffffff;
+          line-height:55px;
+          float: left;
+        }
+        .box{
+          background-color:rgba(255,255,255,0.2);
+          margin-top: 9px;
+          width: 100%;
+          height: 171px;
+          margin-bottom: 30px;
+        }
+        ul{
+          width: 100%;
+        }
+        ul li{
+          width: 100%;
+          height: 42px;
+          background: url() no-repeat 10px 13px;
+          background-size: 18px auto;
+        }
+        ul li:nth-child(1){ background-image: url(../image/icon/des.png); border-bottom: 1px solid rgba(255,255,255,0.2);}
+        ul li:nth-child(2){ background-image: url(../image/icon/regist_time.png); border-bottom: 1px solid rgba(255,255,255,0.2);}
+        ul li:nth-child(3){ background-image: url(../image/icon/my_1.png); border-bottom: 1px solid rgba(255,255,255,0.2);}
+        ul li:nth-child(4){ background-image: url(../image/icon/sist.png); }
+        input{
+          height: 100%;
+          width: 85%;
+          color: #ffffff;
+          margin-left: 12%;
+          font-size: 14px;
+          outline:0;
+        }
+        #button_1{
+          width: 80%;
+          height: 40px;
+          margin: 0 auto;
+          background-color: #E94F67;
+          color: #ffffff;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 7px;
+        }
+        p{
+          color: #ffffff;
+          text-align: center;
+          margin: 10px 0;
+        }
+        #button_2{
+          width: 80%;
+          height: 40px;
+          margin: 0 auto;
+          border: 1px solid #E94F67;
+          color: #E94F67;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 7px;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div class="return" onclick="fanhui()"></div>
+        <span>密码找回</span>
+      </div>
+      <div class="box">
+        <ul>
+          <li>
+            <input id="user" type="text" name="" value="" placeholder="请输入手机号码">
+          </li>
+          <li>
+            <input type="text" name="" value="" placeholder="请输入验证码">
+          </li>
+          <li>
+            <input type="text" name="" value="" placeholder="请输入新密码">
+          </li>
+          <li>
+            <input type="text" name="" value="" placeholder="请重复一遍密码">
+          </li>
+        </ul>
+      </div>
+      <div id="button_1" onclick="queRen()">
+        确认
+      </div>
+      <p>或</p>
+      <div id="button_2" onclick="zhuanHuan()">
+        使用邮箱找回密码
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        document.body.style.height=api.winHeight+"px";
+        $api.fixStatusBar( $api.dom('#header') );
+      };
+      function queRen(){
+
+      }
+      function zhuanHuan(){
+        var button = document.getElementById("button_2");
+        if(button.innerText == '使用邮箱找回密码'){
+          button.innerHTML = '使用手机找回密码';
+          document.getElementById("user").setAttribute("placeholder","请输入邮箱");
+        }else {
+          button.innerHTML = '使用邮箱找回密码';
+          document.getElementById("user").setAttribute("placeholder","请输入手机号码");
+        }
+      }
+      function fanhui(){
+        api.closeWin();
+      }
+  </script>
+  </html>

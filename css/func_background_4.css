@@ -1,0 +1,9 @@
+.box{
+  background-color: #ffffff;
+}
+.main_2{
+  border-top: 0.3px solid #a9a9a9);
+}
+.main_4 li:nth-child(1){border-bottom: 0.3px solid #a9a9a9;}
+.main_4 li:nth-child(2){border-bottom: 0.3px solid #a9a9a9;}
+.main_5 li:nth-child(1){border-bottom: 0.3px solid #a9a9a9;}

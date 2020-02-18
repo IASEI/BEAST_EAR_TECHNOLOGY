@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Hello APP</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="../../css/beaster.css" /> -->
+  <style>
+    body{width: 100%;height: 100%;background-image: url("../image/bg/7.jpeg");background-size: cover;margin: 0;}
+    .time{margin: 0px 23px 0px 23px;height: 130px;}
+    .date{width: 100%;color: #fff;padding-top: 45px;font-size: 24px;text-align: right;}
+    .week{width: 100%;color:#fff;font-size: 12px;text-align: right;}
+    .menu{margin: 0px 10px 10px 10px;height: 130px;background-color:rgba(255, 255, 255, 0.4);    border-radius: 5px;}
+    .headImage{position: relative;top:-25px;left: 25px;width: 100px;float:left;}
+    .headImage-img{border: solid 2px;border-color: #fff;width: 70px;height:70px;border-radius: 35px;/*z-index: 0;*/}
+    .logging{position: relative;top:-42px;left: 76px;font-size: 12px;color: #fff;  }
+    .desSet{font-size: 10px;color: #fff;float: right;padding: 10px;  }
+    .menu-child{position: relative;top:-100px;width: 100%;height: 80px;margin-top: 50px;float: left;}
+    .menu-child ul{float: left;width: 25%;height: 100%;text-align: center;}
+    .menu-child ul img{width: 30px;height: 30px;margin: 20px 0px 0px 0px;}
+    .menu-child ul p{width: 100%;text-align: center;color: #fff;font-size: 12px;}
+    .other{margin: 0px 10px 10px 10px;border-radius: 5px;height: 180px;}
+    .menu2{margin: 0px 0px 0px 10px;height: 150px;}
+    .menu2 ul{width: 48%;margin: 0px 5px 5px 0px;border-radius: 5px;height: 46%;float: left;background-color:rgba(255, 255, 255, 0.4);}
+    .menu2 ul img{width: 30px;height: 30px;margin-left:30%;margin-top: 10%;border-radius: 5px;float: left;}
+    .menu2 ul p{color: #fff;float: left;font-size: 15px;margin-top: 12%;margin-left: 10px;}
+    .customer{margin: 5px 10px;height: 34px;text-align: center;color: #fff;font-size: 15px;line-height: 34px;border-radius: 5px;background-color:rgba(255, 255, 255, 0.4);}
+    .other{background-image: url("../image/res/33_a0v.png");background-size: 100% 100%;}
+
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+<div class="time">
+  <div class="date">2019年09月08日</div>
+  <div class="week">星期日</div>
+</div>
+<div class="menu">
+  <div class="headImage">
+    <img  class="headImage-img" src="../image/res/500_zu.png" onclick="RunWinPage('login','./login.html')"></img>
+    <div class="logging" onclick="RunWinPage('login','./login.html')">登录</div>
+  </div>
+  <div class="desSet" onclick="RunWinPage('login','./login/login.html')">桌面设置</div>
+  <div class="menu-child">
+    <ul><img src="../image/icon/my.png"  onclick="RunWinPage('assistant','./assistant/MyAssistant.html')"></img><p>我的助手</p></ul>
+    <ul><img src="../image/icon/shop.png" onclick="RunWinPage('shop','./shop/Shop.html')"></img><p>兽耳商店</p></ul>
+    <ul><img src="../image/icon/date.png" onclick="RunWinPage('sign','./sign/Sign.html')"></img><p>公告签到</p></ul>
+    <ul><img src="../image/icon/custamer.png" onclick="RunWinPage('login','./func4.html')"></img><p>自定义皮肤</p></ul>
+  </div>
+</div>
+<div class="other"></div>
+<div class="menu2">
+  <ul onclick="RunWinPage('news','./news/News.html')"><img src="../image/icon/news.png"></img><p>新闻</p></ul>
+  <ul onclick="RunWinPage('login','./picture/Photo.html')"><img src="../image/icon/photo.png"></img><p>壁纸</p></ul>
+  <ul onclick="RunWinPage('login','./anime/Anime.html')"><img src="../image/icon/cartroon.png"></img><p>番剧</p></ul>
+  <ul onclick=")"><img src="../image/icon/times.png"></img><p>执勤表</p></ul>
+</div>
+<div class="customer">自定义</div>
+</body>
+
+<script src="../script/apicloud/av-min.js"></script>
+<script type="text/javascript" src="../script/sjcc_main.js"></script>
+<script src="../script/apicloud/realtime.browser.min.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/jquery-main-3.4.1.js"></script>
+<script src="../script/beaster.js"></script>
+<script type="text/javascript">
+var User={name:"",pass:"",type:"",userNet:{}};
+
+  RunWinPage=function(name,url){
+    api.openWin({
+         name: name,
+         url: url,
+         pageParam:{User:User},
+         rect: {
+              x: 0,
+              y: 0,
+              w: api.winWidth,
+              h: api.winHeight
+
+          },
+         bounces: false,
+         bgColor: 'rgba(0,0,0,0)',
+         vScrollBarEnabled: true,
+         hScrollBarEnabled: true
+     });
+  }
+
+//更新页面
+  updateHtml=function(){
+    if(User["userNet"]==null)
+      return;
+    $(".headImage-img").attr("src",User["userNet"]["headImg"]);
+    $(".logging").text("");
+    $(".logging").attr("onclick","RunWinPage('footer','footer.html')");
+    $(".headImage-img").attr("onclick","RunWinPage('footer','footer.html')");
+  }
+
+
+  function image2Base64(imgPath) {
+
+      var img = new Image();
+		  img.src="../image/img/xin/13.jpeg";
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      var dataURL = canvas.toDataURL("image/jpeg").replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
+      console.log(dataURL);
+      return dataURL;
+
+
+  }
+//上传图片
+  onload=function(imgpath)
+  {
+      var data = { base64: '' };
+      data["base64"]=image2Base64(imgpath);
+      var file = new AV.File("13.jpeg",data );
+      file.save().then(function (file) {
+      console.log('文件保存完成。objectId：' + file.id);
+      }, function (error) {
+        // 保存失败，可能是文件无法被读取，或者上传过程中出现问题
+      });
+
+
+
+  }
+
+
+  apiready = function()
+  {
+    $(document).ready(function(){
+      $("body").height(api.winHeight);
+      updateTime();
+      setBG(1);
+    });
+    //html页面a：
+    api.addEventListener({
+        name: 'myEvent'
+    }, function(ret, err) {
+      var a=JSON.stringify(ret.value);
+      User=ret.value.key1;
+      if(User['name']==''){
+        window.location.reload();
+      }else {
+        updateHtml();
+      }
+
+    });
+
+  };
+</script>
+
+</html>

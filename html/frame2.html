@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>聊天室</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <style>
+          html,body{
+            background-color:rgba(0,0,0,0);
+          }
+          #main{
+            width: 96%;
+            margin: 0 auto;
+          }
+          p{
+            color: #ffffff;
+            font-size: 11px;
+            margin-left: 5px;
+            padding-top: 15px;
+            padding-bottom: 4px;
+          }
+          .box{
+            width: 46%;
+            height: 80px;
+            float: left;
+            margin: 0 2% 10px 2%;
+            border-radius:5px;
+          }
+          .box:nth-child(2){background-image: linear-gradient(to right, #E4E4E4 , #CECECE);}
+          .box:nth-child(3){background-image: linear-gradient(to right, #F0ECA7 , #E3DC7D);}
+          .box:nth-child(4){background-image: linear-gradient(to right, #FDDFD0 , #EAB2B9);}
+          .box:nth-child(5){background-image: linear-gradient(to right, #FFEA7A , #FFC027);}
+          .box:nth-child(6){background-image: linear-gradient(to right, #FEA68A , #F25776);}
+          .box:nth-child(7){background-image: linear-gradient(to right, #6888AD , #182F52);}
+          .box img{
+            width: 80px;
+            float: left;
+          }
+          .box span{
+            font-size: 20px;
+            color: #ffffff;
+            font-weight: 700;
+            margin-left: 10px;
+            height: 80px;
+            line-height: 80px;
+          }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+      <p>阁下，一起来聊天吧ヾ(Ő∀Ő๑)ﾉ</p>
+      <div class="box" onclick="join(this)">
+        <img src="../image/res/40_a11.png">
+        <span>科 技</span>
+      </div>
+      <div class="box" onclick="join(this)">
+        <img src="../image/res/41_a12.png">
+        <span>生 活</span>
+      </div>
+      <div class="box" onclick="join(this)">
+        <img src="../image/res/42_a13.png">
+        <span>音 乐</span>
+      </div>
+      <div class="box" onclick="join(this)">
+        <img src="../image/res/43_a14.png">
+        <span>旅 游</span>
+      </div>
+      <div class="box" onclick="join(this)">
+        <img src="../image/res/44_a15.png">
+        <span>游 戏</span>
+      </div>
+      <div class="box" onclick="join(this)">
+        <img src="../image/res/48_a19.png">
+        <span>动 漫</span>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        $api.fixStatusBar( $api.dom('#main') );
+      };
+      function join(tag){
+        var rooms = $api.domAll('.box');
+        var name = '';
+        var room_id = '';
+        for (var i = 0; i < rooms.length; i++){
+          if(rooms[i] == tag){
+            console.log(i);
+            switch (i) {
+              case 0:
+                  name = "科技";
+                  room_id = '5dc1a03c7b968a0071fe20ad';
+                  break;
+              case 1:
+                  name = "生活";
+                  room_id = '5dc1a072c8959c00657fca1a';
+                   break;
+              case 2:
+                  name = "音乐";
+                  room_id = '5dc1a0a3d376160071d41a41';
+                   break;
+              case 3:
+                  name = "旅游";
+                  room_id = '5dc1a0b2ba39c80065108582';
+                   break;
+              case 4:
+                  name = "游戏";
+                  room_id = '5dc1a0c2ba39c80065108592';
+                   break;
+              case 5:
+                  name = "动漫";
+                  room_id = '5dc1a0d07b968a0071fe2162';
+            }
+            var currentUser = AV.User.current();
+            api.openWin({
+              name: name,
+              url: './room.html',
+              animation: {
+                  type:"movein",                //动画类型（详见动画类型常量）
+                  subType:"from_right",       //动画子类型（详见动画子类型常量）
+                  duration:300                //动画过渡时间，默认300毫秒
+              },
+              pageParam: {
+                user: currentUser.id,
+                room_id: room_id
+              }
+            });
+          }
+        }
+      }
+  </script>
+  </html>

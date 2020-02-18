@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href=""/ id="css">
+      <style>
+        body{
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          z-index:1;
+        }
+        #main{
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+        #header{
+          width: 100%;
+          height: 55px;
+          margin-bottom: 15px;
+        }
+        .return{
+          height: 55px;
+          width: 20%;
+          background: url(../image/icon/back.png) no-repeat 15px 15px;
+          background-size: auto 25px;
+          float: left;
+        }
+        #header span{
+          width: 60%;
+          text-align: center;
+          color: #ffffff;
+          line-height:55px;
+          float: left;
+        }
+        .my{
+          width: 20%;
+          position: relative;
+          float: left;
+        }
+        .my span{
+          text-align: center;
+          color: #ffffff;
+          line-height:55px;
+          position: absolute;
+          right: 14px;
+        }
+        #foot{
+          width: 100%;
+          height: 40px;
+          background-color: #F6647B;
+          color: #ffffff;
+          text-align: center;
+          font-size: 14px;
+          line-height: 40px;
+          position: absolute;
+          bottom: 0;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div class="return" onclick="fanhui()"></div>
+        <span>意见反馈</span>
+        <div class="my">
+          <span>我的</span>
+        </div>
+      </div>
+      <div id="foot">提交</div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        document.body.style.height=api.winHeight+"px";
+        $api.fixStatusBar( $api.dom('#header') );
+        openBox();
+        var query = new AV.Query('_User');
+        query.get(currentUser.id).then(function (todo) {
+          jianCe(todo.get('background'));
+        });
+      };
+      var currentUser = AV.User.current();
+      var json = currentUser.toJSON();
+      function jianCe(background){
+        var obj = document.getElementById("css");
+        if(background == '自定义'){
+          console.log(background);
+          obj.setAttribute("href","../css/func_background_1.css");
+        }else {
+          console.log(background);
+          obj.setAttribute("href","../css/func_background_2.css");
+        }
+      }
+      function fanhui(){
+        api.closeWin();
+      }
+      function openBox(){
+        api.openFrame({
+          name: 'func5_1',
+          url: './func5_1.html',
+          rect: {
+            x: 0,
+            y: $api.dom('#header').offsetHeight,
+            w: 'auto',
+            h: api.winHeight - $api.dom('#header').offsetHeight - $api.dom('#foot').offsetHeight
+          }
+        });
+      }
+  </script>
+  </html>

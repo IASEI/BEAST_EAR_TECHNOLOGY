@@ -1,0 +1,119 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Hello APP</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/beaster.css" />
+
+  <style>
+    .my_title{width: 100%;height: 80px;margin-bottom: 12px;}
+    .my_title div{float: left;margin-top: 45px;}
+    .my_title div:nth-child(1){width: 30%;}
+    .my_title div:nth-child(1) span{margin-left: 10px;color: #fff;font-size: 20px;}
+    .my_title div:nth-child(2){width: 40%;padding-top: 0px;height: 25px;float: left;text-align: center;color: #fff;}
+    .my_title div:nth-child(3){width: 30%;}
+    .my_title img{float: left;margin: 0px 0px 0px 20px;height: 22px;border: 1px solid #fff;}
+
+    .signCard{margin: 0.3%;width: 32.6%;float: left;background:url("http://lc-RAF1Y8dU.cn-n1.lcfile.com/3dce2e02e07cd06db7c3.jpeg");background-size: cover;}
+
+    .sro{width: 100%;position: absolute;top:80px; bottom: 0px;overflow-y: auto;}
+    </style>
+</head>
+
+<body>
+<div class="bg_color_blur"></div>
+<div id="main">
+<!-- 标题 -->
+<div class="my_title bg_color_transparent">
+  <div></div>
+  <div>壁纸库</div>
+  <div></div>
+</div>
+<div class="sro">
+
+<div class='signCard'></div>
+
+
+</div>
+
+</div>
+
+</body>
+
+<script src="../../script/apicloud/av-min.js"></script>
+<script src="../../script/sjcc_main.js"></script>
+<script src="../../script/apicloud/beaster.js"></script>
+<script src="../../script/apicloud/realtime.browser.min.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-main-3.4.1.js"></script>
+<script type="text/javascript" src="../../script/beaster.js"></script>
+
+<script type="text/javascript">
+
+var User={name:"",pass:"",type:"",userNet:{}};
+var type="";
+var imgs=[];
+  apiready = function()
+  {
+    $(document).ready(function(){
+      $("body").height(api.winHeight);
+      $("body").width(api.winWidth);
+      $(".signCard").height($(".signCard").width()*1.8);
+      initPage();
+      setBG(2);
+      getOnlineImage(User["type"]);
+    });
+  };
+
+
+
+
+ getOnlineImage=function(type){
+   var query = new AV.Query('_File');
+    query.startsWith('name', type);
+    query.find().then(function (students) {
+    // students 是包含满足条件的 Student 对象的数组
+    for(var i=0;i<students.length;i++)
+    {
+
+      imgs.push(students[i].toJSON());
+      console.log("<div class='signCard' ></div>");
+      $(".sro").append($(".signCard:nth-child(1)").clone(true));
+      $(".signCard:nth-child("+(i+1)+")").css("background-image","url("+imgs[i]["url"]+")");
+      var path="RunWinPage('pictureshow','pictureShow.html','"+imgs[i]["url"]+"')";
+      console.log(path);
+      $(".signCard:nth-child("+(i+1)+")").attr("onclick",path);
+    }
+  },function (error) {
+    // 保存失败，可能是文件无法被读取，或者上传过程中出现问题
+      console.log(error);
+  });
+  // updateHtmls();
+ }
+
+RunWinPage=function(name,url,type){
+  User['type']=type;
+  api.openWin({
+         name: name,
+         url: url,
+       pageParam:{User:User},
+       rect: {
+            x: 0,
+            y: 0,
+            w: api.winWidth,
+            h: api.winHeight
+
+        },
+       bounces: false,
+       bgColor: 'rgba(0,0,0,0)',
+       vScrollBarEnabled: true,
+       hScrollBarEnabled: true
+     });
+}
+</script>
+
+</html>

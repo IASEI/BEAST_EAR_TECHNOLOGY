@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Hello APP</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/beaster.css" />
+  <style>
+    .my_title{width: 100%;height: 80px;margin-bottom: 8px;}
+    .my_title div{float: left;margin-top: 45px;}
+    .my_title div:nth-child(1){width: 30%;}
+    .my_title div:nth-child(1) span{margin-left: 10px;color: #fff;font-size: 20px;line-height: 100%;}
+    .my_title div:nth-child(2){width: 40%;padding-top: 0px;height: 25px;float: left;text-align: center;color: #fff;}
+    .my_title div:nth-child(3){width: 30%;}
+    .my_title img{float: left;margin: 0px 0px 0px 20px;height: 22px;border: 1px solid #fff;}
+
+    #signCard{margin: 0px 10px;height: 150px;border-radius: 5px;margin-bottom: 30px;}
+    #signCard p{width: 100%;height: 30px;line-height: 30px;color: #fff;margin-bottom: 10px;}
+    #signCard p span:nth-child(1){margin-left: 10px;}
+    #signCard p span:nth-child(2){margin-right: 10px;float: right;}
+    #signCard ul{float: left;width: 25%;height: 80px;margin-bottom: 10px;}
+    #signCard ul img{width:40px;margin-left: 27%;}
+    #signCard ul p{width: 100%;font-size: 10px;text-align: center;float: left;margin-top: 10px;}
+    #signCard div:nth-child(6){width: 100%;font-size: 12px;height: 20px;float: left;}
+    #signCard div:nth-child(6) span:nth-child(1){margin-left: 10px;}
+    #signCard div:nth-child(6) span:nth-child(2){margin-right: 10px;float: right;}
+    #signCard div:nth-child(7){width: 80px;text-align: center;height: 30px;line-height: 15px;border-radius: 20px;margin:0px auto;margin-top:110px;color: #fff;}
+  </style>
+</head>
+
+<body>
+<div class="bg_color_blur"></div>
+<div id="main">
+<!-- 标题 -->
+<div class="my_title bg_color_transparent">
+  <div><span>每日签到</span></div>
+  <div></div>
+  <div></div>
+</div>
+<div id="signCard" class="bg_color_transparent">
+  <p><span>2019年10月22日</span><span>已连续签到0天</span></p>
+  <ul><img src="../../image/icon/text8.png"/><p>今日更新番剧</p></ul>
+  <ul><img src="../../image/icon/game1.png"/><p>本月发售游戏</p></ul>
+  <ul><img src="../../image/icon/text9.png"/><p>补签</p></ul>
+  <ul><img src="../../image/icon/text10.png"/><p>今日签到卡片</p></ul>
+  <div class="font_color_pink"><span>签到规则</span><span>签到记录</span></div>
+  <div class="bg_color_pink">签到</div>
+</div>
+
+</body>
+<script src="../../script/apicloud/av-min.js"></script>
+<script type="text/javascript" src="../../script/sjcc_main.js"></script>
+<script type="text/javascript" src="../../script/beaster.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-main-3.4.1.js"></script>
+<script type="text/javascript">
+var User={name:"",pass:"",type:"3.jpeg",userNet:{}};
+
+  apiready = function()
+  {
+    $(document).ready(function(){
+      $("body").height(api.winHeight);
+      $("body").width(api.winWidth);
+      setBG(2);
+    });
+    api.openFrame({
+        name: 'announcement',
+        url: './Announcement.html',
+        rect: {
+            x: 0,
+            y: 270,
+            w: api.winWidth,
+            h: "auto"
+        },
+        pageParam: {
+            name: 'test'
+        },
+        bounces: true,
+        bgColor: 'rgba(0,0,0,0)',
+        vScrollBarEnabled: true,
+        hScrollBarEnabled: true
+    });
+
+  };
+
+</script>
+
+</html>

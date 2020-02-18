@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>账户与绑定</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href=""/ id="css">
+      <style>
+          body{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index:1;
+          }
+          #main{
+            width: 100%;
+            height: 100%;
+          }
+          #header{
+            width: 100%;
+            height: 55px;
+            margin-bottom: 15px;
+          }
+          .return{
+            height: 55px;
+            width: 20%;
+            background: url(../image/icon/back.png) no-repeat 15px 15px;
+            background-size: auto 25px;
+            float: left;
+          }
+          #header span{
+            width: 60%;
+            text-align: center;
+            color: #ffffff;
+            line-height:55px;
+            float: left;
+          }
+          .box{
+            margin-top: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 171px;
+          }
+          p{
+            color: #A9A9A9;
+            font-size: 15px;
+            padding-left: 4px;
+          }
+          ul{
+            width: 93%;
+            margin: 0 auto;
+          }
+          ul li{
+            width: 100%;
+            height: 42px;
+            background: url() no-repeat 1px 13px;
+            background-size: 18px auto;
+          }
+          #ul_1 li:nth-child(1){ background-image: url(../image/icon/meil.png);}
+          #ul_2 li:nth-child(1){ background-image: url(../image/icon/phone.png); border-bottom: 1px solid rgba(255,255,255,0.2);}
+          #ul_2 li:nth-child(2){ background-image: url(../image/icon/qq1.png); border-bottom: 1px solid rgba(255,255,255,0.2);}
+          #ul_2 li:nth-child(3){ background-image: url(../image/icon/wechat1.png); border-bottom: 1px solid rgba(255,255,255,0.2);}
+          #ul_2 li:nth-child(4){ background-image: url(../image/icon/key.png);}
+          .box span{
+            height: 42px;
+            line-height:42px;
+            margin-left: 25px;
+            font-size: 15px;
+          }
+          .right_1{
+            width: 62px;
+            height: 22px;
+            margin-top: 9px;
+            border-radius:12px;
+            float: right;
+            text-align: center;
+            line-height: 22px;
+            font-size: 11px;
+          }
+          .right_2{
+            width: 62px;
+            height: 22px;
+            margin-top: 9px;
+            margin-left: 9px;
+            border: 1px solid #A9A9A9;
+            border-radius:12px;
+            float: right;
+            text-align: center;
+            line-height: 22px;
+            font-size: 11px;
+            color: #A9A9A9;
+          }
+          .box_1{
+            margin-top: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            padding-top: 3px;
+            padding-bottom: 3px;
+          }
+          .box_2{
+            width: 96%;
+            margin: 0 auto;
+            font-size: 15px;
+          }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div class="return" onclick="fanhui()"></div>
+        <span>账户和绑定设置</span>
+      </div>
+      <p>登录账号</p>
+      <div class="box" style="height: 42px">
+        <ul id="ul_1">
+          <li>
+            <span>邮箱</span>
+            <div class="right_1">修改密码</div>
+          </li>
+        </ul>
+      </div>
+      <p>其它登录方式</p>
+      <div class="box">
+        <ul id="ul_2">
+          <li>
+            <span>手机</span>
+            <div class="right_2">解除绑定</div>
+            <div class="right_2">更换绑定</div>
+            <div class="right_1">修改密码</div>
+          </li>
+          <li>
+            <span>QQ</span>
+            <div class="right_2">解除绑定</div>
+          </li>
+          <li>
+            <span>微信</span>
+            <div class="right_2">解除绑定</div>
+          </li>
+          <li>
+            <span>账号密码</span>
+            <div class="right_1">修改密码</div>
+          </li>
+        </ul>
+      </div>
+      <p>如何解/换绑手机</p>
+      <div class="box_1">
+        <div class="box_2">
+          通过除手机以外的任一种方式（邮箱/QQ/微信/用户ID）登录，选择解/换绑手机即可。换绑手机，验证码会直接发送到新手机号上哒~如果解绑其他也是如上操作~
+        </div>
+      </div>
+      <div class="box_2" style="color: #A9A9A9">
+        注意：账号绑定或者解绑遇到困难的话可以联系兽耳智能姬QQ3552613679，闲聊禁止哦~
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        document.body.style.height=api.winHeight+"px";
+        $api.fixStatusBar( $api.dom('#header') );
+        var query = new AV.Query('_User');
+        query.get(currentUser.id).then(function (todo) {
+          jianCe(todo.get('background'));
+        });
+      };
+      var currentUser = AV.User.current();
+      var json = currentUser.toJSON();
+      function jianCe(background){
+        var obj = document.getElementById("css");
+        if(background == '自定义'){
+          console.log(background);
+          obj.setAttribute("href","../css/func_background_1.css");
+        }else {
+          console.log(background);
+          obj.setAttribute("href","../css/func_background_2.css");
+        }
+      }
+      function fanhui(){
+        api.closeWin();
+      }
+  </script>
+  </html>

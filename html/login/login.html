@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <style>
+        html,body{width: 100%;height: 100%;background: rgba(0, 0, 0, 0);margin: 0;}
+        .mainIcon{width: 140px;height: 140px;margin: 60px 0px 44px 122px;}
+
+        .login_info{background-color: rgba(255, 255, 255, 0.2);border-radius: 5px;border: solid 1px #fff;margin: 0px 32px;height: 80px;overflow: hidden;}
+
+        .login_info img{/*border: solid 1px;*/width: 46px;height: 40px;float:left;}
+
+        .username{width: 100%;height: 50%;border-bottom: 1px solid #fff;}
+
+        .password{width: 100%;height: 50%;}
+
+        .login_info input{background:transparent;margin: atuo 0px;height: 90%;float: left;color: #fff;outline:medium;}
+
+        .login_info input::-webkit-input-placeholder { /* WebKit browsers */color: #fff;font-size: 14px;}
+
+        .forget{color: #F8657D;font-size: 12px;margin: 12px 33px;float: left;}
+
+        .sign{color: #F8657D;font-size: 12px;margin: 12px 33px;float: right;}
+
+        .logined{border-radius: 5px;text-align: center;line-height: 40px;height: 40px;margin: 54px 33px;color: #fff;font-size: 14px;background-color: #F8657D;}
+
+        .qq{width: 40px;float:left;margin-left: 140px;}
+
+        .wechat{width: 40px;float:left;margin-left: 34px;}
+        .qq img,.wechat img{border-radius: 20px;width: 40px;height: 40px;}
+
+        .qq p,.wechat p{color: #fff;text-align: center;font-size: 10px;}
+      </style>
+
+  </head>
+  <body>
+    <img src="../../image/icon/loginIcon.png" class="mainIcon"></img>
+    <div class="login_info">
+      <div class="username"><img src="../../image/icon/user.png"><input type="text" name="firstname" placeholder="请输入账号" id="user"></div>
+      <div class="password"><img src="../../image/icon/pass.png"><input type="password" name="password" placeholder="请输入密码" id="pass"></div>
+    </div>
+    <div class="forget">忘记密码?</div>
+    <div class="sign">新用户注册</div>
+    <div class="logined" onclick="loginData()">登录</div>
+    <div class="qq"><img src="../../image/icon/qq.png"></img><p>QQ</p></div>
+    <div class="wechat"><img src="../../image/icon/wechat.png"></img><p>微信</p></div>
+  </body>
+  <script src="../../script/apicloud/av-min.js"></script>
+  <script src="../../script/apicloud/realtime.browser.min.js"></script>
+
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/jquery-main-3.4.1.js"></script>
+  <script type="text/javascript">
+  var User={name:"",pass:"",type:"3.jpeg",userNet:{}};
+
+
+apiready = function(){
+  $(document).ready(function(){
+    $("body").height(api.winHeight);
+    $("body").width(api.winWidth);
+    initPage();
+  });
+};
+
+  loginData=function()
+  {
+    User["name"]=$("#name").val();
+    User["pass"]=$("#pass").val();
+    logins();
+  }
+//登录
+  logins=function() {
+        AV.User.logIn(User["name"], User["pass"])
+          .then(
+            function(user) {
+              User["userNet"]=user.toJSON();
+              alert(User["userNet"]["headImg"]);
+              api.closeWin({
+                  name: 'login'
+              });
+            }
+          )
+          .catch(alert);
+      };
+
+// 更新本地数据
+  updateDate=function(){
+    if(User["userNet"]!=null){
+      var todo = AV.Object.createWithoutData(User["name"], User["userNet"]["objectId"]);
+      todo.fetch().then(function (todo) {
+        User["userNet"]=todo.toJSON();
+      });
+    }
+  };
+
+//上传数据
+  uploadDate=function(){
+      if(User["userNet"]!=null){
+      var todo = AV.Object.createWithoutData(User["name"], User["userNet"]["objectId"]);
+      todo.set('email', User["userNet"]["email"]);
+      todo.set('energer', User["userNet"]["energer"]);
+      todo.set('gender', User["userNet"]["gender"]);
+      todo.set('level', User["userNet"]["level"]);
+      todo.set('love', User["userNet"]["love"]);
+      todo.set('mobilePhoneNumber', User["userNet"]["mobilePhoneNumber"]);
+      todo.set('password', User["userNet"]["password"]);
+      todo.set('username', User["userNet"]["username"]);
+      todo.save();
+    }
+  };
+
+//更新页面
+  updateHtml=function(){
+    if(User["userNet"]==null)
+      return;
+    $(".headImage-img").attr("src",User["userNet"]["headImg"]);
+    $(".logging").text("");
+    $(".logging").attr("onclick","");
+  }
+
+  //初始化页面数据
+    initPage=function(){
+      User=api.pageParam.User;
+    }
+  </script>
+  </html>

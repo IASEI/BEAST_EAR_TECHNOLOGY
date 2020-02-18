@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Hello APP</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/layui.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/layui.mobile.css" />
+  <style>
+    html,body{width: 100%;height: 100%;margin: 0;position:relative;background: rgba(0,0,0,0);}
+    .bg{width: 100%;height:100%;/*-webkit-filter: blur(5px);-moz-filter: blur(5px);-o-filter: blur(5px);-ms-filter: blur(5px);filter: blur(5px);*/position: absolute;left: 0px;right: 0px;}
+    #main{width: 100%;height:100%;position: absolute;left: 0px;right: 0px;}
+
+    .my_title{width: 100%;height: 84px;background-color: rgba(255, 255, 255, 0.4);margin-bottom: 8px;}
+    .my_title div{float: left;margin-top: 45px;}
+    .my_title div:nth-child(1){width: 20%;}
+    .my_title div:nth-child(2){width: 60%;padding-top: 0px;height: 25px;float: left;text-align: center;color: #fff;}
+    .my_title div:nth-child(3){width: 20%;color: #fff;}
+    .my_title div:nth-child(3) span{float: right;margin-right: 20px;text-align: right;}
+    .my_title img{float: left;margin: 0px 0px 0px 20px;height: 22px;border: 1px solid #fff;}
+    .layui-form-checked[lay-skin=primary] i {background-color:#F8657D ;border-color:#F8657D !important; color: #fff;}
+    #role{width: 120px;height: 140px;border-radius: 5px;margin: 10px;background-color: rgba(255,255,255,0.5);position: relative;border: 1px solid #ddd;}
+    #role img{width: 120px;height: 120px;}
+    #role div:nth-child(2){width: 10px;height: 10px;border: 1px solid #000;position: absolute;left: 100px;top:100px;}
+    #role div:nth-child(3){width: 100%;height: 20px;text-align: center;line-height: 20px;color: #fff;font-size: 14px;}
+
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    vertical-align:middle;
+    margin-top:0;
+    background:#fff;
+    border:#999 solid 1px;
+    border-radius: 3px;
+    min-height: 12px;
+    min-width: 12px;
+}
+input[type="checkbox"]:checked {
+    background: #3190e8;
+}
+input[type=checkbox]:checked::after{
+    content: '';
+    top: 3px;
+    left: 3px;
+    position: absolute;
+    background: transparent;
+    border: #fff solid 2px;
+    border-top: none;
+    border-right: none;
+    height: 6px;
+    width: 10px;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+
+  </style>
+</head>
+
+<body>
+<div class="bg"></div>
+<div id="main">
+<!-- 标题 -->
+<div class="my_title">
+  <div onclick="closePages()"><img src="../../image/res/553_g.png"></img></div>
+  <div>更换服装</div>
+  <div><span>保存</span></div>
+</div>
+<div id="role">
+  <img src=""/>
+  <form class="layui-form"><input type="checkbox" name="" lay-skin="primary"> <span></span></form>
+  <div>公式服</div>
+</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../../script/layui.js"></script>
+<script type="text/javascript" src="../../script/layui.all.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-main-3.4.1.js"></script>
+<script type="text/javascript">
+var User={name:"",pass:"",type:"3.jpeg",userNet:{}};
+
+  apiready = function()
+  {
+    $(document).ready(function(){
+      $("body").height(api.winHeight);
+      $("body").width(api.winWidth);
+
+    });
+
+  };
+
+  function closePages()
+  {
+    api.closeWin({
+        name: 'cloth'
+    });
+
+  }
+</script>
+
+</html>

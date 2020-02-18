@@ -1,0 +1,102 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Hello APP</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/beaster.css" />
+  <style>
+    #main{width: 100%;height:100%;position: absolute;left: 0px;right: 0px;}
+
+    .my_title{width: 100%;height: 85px;}
+    .my_title div{float: left;margin-top: 45px;}
+    .my_title div:nth-child(1){width: 30%;}
+    .my_title div:nth-child(1) span{margin-left: 10px;color: #fff;font-size: 20px;}
+    .my_title div:nth-child(2){width: 40%;padding-top: 0px;height: 25px;float: left;text-align: center;color: #fff;}
+    .my_title div:nth-child(3){width: 30%;}
+    .my_title img{float: left;margin: 0px 0px 0px 20px;height: 22px;border: 1px solid #fff;}
+
+    /*.timeday{width: 100%;height: 50px;line-height: 50px;text-align: center;font-size: 15px;color: #fff;}
+    .timeday ul{width: 14.2%;height: 100%;float: left;}*/
+
+
+    </style>
+</head>
+
+<body>
+<div class="bg_color_blur"></div>
+<div id="main">
+<!-- 标题 -->
+<div class="my_title bg_color_transparent">
+  <div></div>
+  <div>新闻</div>
+  <div></div>
+</div>
+<div class="footers bg_color_transparent">
+  <div><ul onclick="RunFramePage('newfound','./Newfound.html')"><img src="../../image/icon/everyDayNews.png"/><p>每日精选</p></ul></div>
+  <div><ul onclick="RunFramePage('newsfine','./NewsFine.html')"><img src="../../image/icon/hurryCar.png"/><p>&nbsp;&nbsp;&nbsp;&nbsp;发现</p></ul></div>
+</div>
+</div>
+</body>
+
+<script src="../../script/apicloud/av-min.js"></script>
+<script type="text/javascript" src="../../script/sjcc_main.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-main-3.4.1.js"></script>
+<script type="text/javascript" src="../../script/swiper.min.js"></script>
+<script type="text/javascript">
+var User={name:"",pass:"",type:"3.jpeg",userNet:{}};
+
+  apiready = function()
+  {
+    $(document).ready(function(){
+    $("body").height(api.winHeight);
+    $("body").width(api.winWidth);
+    $(".test").height(api.winHeight-150);
+    $(".my_title").css('marginBottom',api.winHeight-130);
+    RunFramePage('newfound','./Newfound.html');
+    });
+  };
+
+  RunFramePage=function(name,url)
+  {
+    api.openFrame({
+        name: name,
+        url: url,
+        rect: {
+            x: 0,
+            y: 85,
+            w: api.winWidth,
+            h: api.winHeight-126
+        },
+        pageParam: {
+            name: 'test'
+        },
+        bounces: false,
+        bgColor: 'rgba(0,0,0,0)',
+        vScrollBarEnabled: false,
+        hScrollBarEnabled: false
+    });
+
+    if(name=='newfound')
+    {
+      api.closeFrame({
+          name: 'newsfine'
+      });
+
+    }
+    else {
+      api.closeFrame({
+          name: 'newfound'
+      });
+    }
+
+  }
+
+</script>
+
+</html>

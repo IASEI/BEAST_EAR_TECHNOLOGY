@@ -1,0 +1,121 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Hello APP</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/layui.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/beaster.css" />
+  <style>
+
+    #timeday{background-color: rgba(255, 255, 255, 0.2);width: 100%;height: 40px;line-height: 40px;text-align: center;font-size: 15px;color: #fff;}
+    #timeday ul{width: 12.5%;height: 100%;float: left;}
+    .test{overflow-y: auto;position: relative;top:0px;}
+    .swiper-slide div{width: 50%;height: 145px;float: left; border-radius: 5px;}
+    .swiper-slide div div{width: 94%;height: 92%;overflow: hidden;margin: 2% 2% 2% 4%;border-radius: 5px;}
+    .swiper-slide div div img{width: 100%;height:86px;}
+    .swiper-slide div div p span{margin-left: 10px;}
+    .swiper-slide div div p:nth-child(2){width: 100%;height: 29px;line-height: 29px;font-size: 16px;color: #fff;}
+    .swiper-slide div div p:nth-child(3){width: 100%;height: 29px;font-size: 11px;color: #fff;}
+    .footers{width: 100%;margin-bottom: 0px;height: 50px;background-color: red;}
+    .footers div{width: 50%;float: left;}
+    .footers div ul{border: 1px solid;width: 60px;height: 50px;margin: 0px auto;}
+    .footers div ul img{width: 20px;height: 20px;border: 1px solid;margin: 0px auto;}
+    .footers div ul p{width: 100%;height: 15px;border: 1px solid;font-size: 15px;}
+    </style>
+</head>
+
+<body>
+<div class="bg"></div>
+<div>
+<div id="timeday">
+  <ul>全部</ul>
+  <ul>周一</ul>
+  <ul>周二</ul>
+  <ul>周三</ul>
+  <ul>周四</ul>
+  <ul>周五</ul>
+  <ul>周六</ul>
+  <ul>周日</ul>
+</div>
+<div class="swiper-container test">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <!-- <div >
+                <div class="bg_color_transparent">
+                  <img src=""/>
+                  <p><span>战争</span></p>
+                  <p><span>更新</span></p>
+                </div>
+              </div> -->
+            </div>
+            <div class="swiper-slide">
+
+            </div>
+            <div class="swiper-slide">
+
+            </div>
+            <div class="swiper-slide">
+
+            </div>
+            <div class="swiper-slide">
+            </div>
+            <div class="swiper-slide">
+            </div>
+            <div class="swiper-slide">
+            </div>
+            <div class="swiper-slide">
+            </div>
+        </div>
+</div>
+</div>
+</body>
+
+<script src="../../script/apicloud/av-min.js"></script>
+<script type="text/javascript" src="../../script/sjcc_main.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-main-3.4.1.js"></script>
+<script type="text/javascript" src="../../script/swiper.min.js"></script>
+<script type="text/javascript" src="../../script/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+var User={name:"",pass:"",type:"3.jpeg",userNet:{}};
+
+  var h=1;
+  apiready = function()
+  {
+      $(document).ready(function()
+      {
+      $(".test").height(api.winHeight-180);h=0;
+      var day=document.getElementById("timeday");
+      var days=day.getElementsByTagName("ul");
+      days[0].borderBottom="2px solid red";
+      days[h].style.color="#fff";
+      days[0].style.color="#F8657D";
+      h=0;
+    });
+  };
+
+var mySwiper = new Swiper('.swiper-container',{
+
+    onTouchEnd:function(swiper){
+      setTimeout(function(){
+      var day=document.getElementById("timeday");
+      var days=day.getElementsByTagName("ul");
+      days[swiper.activeIndex].borderBottom="2px solid red";
+      days[h].style.color="#fff";
+      days[swiper.activeIndex].style.color="#F8657D";
+      h=swiper.activeIndex;
+      },50);
+
+      }
+
+}
+);
+
+</script>
+
+</html>

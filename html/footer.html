@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>底部导航栏</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+  <style>
+    body{
+      width: 100%;
+      background-image: url("../image/bg/3.jpeg");
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index:1;
+    }
+    body:after{
+      content: "";
+      width:100%;
+      height:100%;
+      position: absolute;
+      left:0;
+      top:0;
+      background: inherit;
+      filter: blur(3px);
+      z-index:-1;
+    }
+    #main{
+      width: 100%;
+      position: absolute;
+      bottom: 56px;
+      top: 0;
+    }
+    #footer{
+      width: 100%;
+      height: 48px;
+      padding-top: 8px;
+      background-color:rgba(255,255,255,0.1);
+      position: absolute;
+      bottom: 0;
+    }
+    #footer ul li{
+      padding-top: 25px;
+      padding-bottom: 7px;
+      background: url() no-repeat center 2px;
+      background-size: auto 20px;
+      font-size:12px;
+      text-align: center;
+      color: #ffffff;
+      float: left;
+      width: 33.3%;
+    }
+    #footer ul li:nth-child(1){ background-image: url(../image/icon/vip_g.png); }
+    #footer ul li:nth-child(2){ background-image: url(../image/icon/my_s.png); }
+    #footer ul li:nth-child(3){ background-image: url(../image/icon/game.png); }
+    #footer ul li:nth-child(1).active{ background-image: url(../image/icon/vip_g2.png); color: #E0C667; }
+    #footer ul li:nth-child(2).active{ background-image: url(../image/icon/my_s.png); color: #F7657C; }
+    #footer ul li:nth-child(3).active{ background-image: url(../image/icon/game.png); color: #F7657C; }
+  </style>
+</head>
+<body>
+  <div id="main"></div>
+  <div id="footer">
+    <ul>
+        <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >会员</li>
+        <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con active" >我的</li>
+        <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >聊天室</li>
+    </ul>
+  </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+  apiready = function(){
+    document.body.style.height=api.winHeight+"px";
+    funIniGroup();
+  }
+  function funIniGroup(){
+      var eFootLis = $api.domAll('footer li'),
+          frames = [];
+      for (var i = 0,len = 3; i < len; i++) {
+              frames.push( {
+                  name: 'frame'+i,
+                  url: './frame'+i+'.html',
+                  bgColor : 'rgba(0,0,0,0)',
+                  bounces:false
+              } )
+      }
+      api.openFrameGroup({
+          name: 'group',
+          scrollEnabled: false,
+          rect: {
+              x: 0,
+              y: 0,
+              w: api.winWidth,
+              h: $api.dom('#main').offsetHeight
+          },
+          index: 1,
+          frames: frames
+      }, function (ret, err) {
+
+      });
+  }
+  function randomSwitchBtn( tag ) {
+      if( tag == $api.dom('#footer li.active') )return;
+      var eFootLis = $api.domAll('#footer li'),
+          index = 0;
+      for (var i = 0,len = eFootLis.length; i < len; i++) {
+          if( tag == eFootLis[i] ){
+              index = i;
+          }else{
+              $api.removeCls(eFootLis[i], 'active');
+          }
+      }
+      $api.addCls( eFootLis[index], 'active');
+      api.setFrameGroupIndex({
+          name: 'group',
+          index: index
+      });
+  }
+</script>
+</html>

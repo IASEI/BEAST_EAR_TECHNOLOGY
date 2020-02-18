@@ -1,0 +1,70 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Hello APP</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/beaster.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+  <style>
+    .my_title{width: 100%;height: 80px;margin-bottom: 12px;}
+    .my_title div{float: left;margin-top: 45px;}
+    .my_title div:nth-child(1){width: 30%;}
+    .my_title div:nth-child(1) span{margin-left: 10px;color: #fff;font-size: 20px;}
+    .my_title div:nth-child(2){width: 40%;padding-top: 0px;height: 25px;float: left;text-align: center;color: #fff;}
+    .my_title div:nth-child(3){width: 30%;}
+    .my_title img{float: left;margin: 0px 0px 0px 20px;height: 22px;border: 1px solid #fff;}
+
+    .ok{position: absolute;left: 50px;right:50px;background: rgba(0,0,0,0.5);bottom: 20px;height: 30px;border-radius: 20px;z-index: 3;}
+    .ok ul{width: 49%;float: left;height: 20px;margin: 5px 0px; font-size: 15px;color: #fff;text-align: center;}
+    .ok ul:nth-child(1){border-right: 1px solid #fff;}
+    </style>
+</head>
+
+<body>
+<div class="bg_color_blur"></div>
+<div id="main" style="z-index:2">
+
+<div class="ok"><ul><img src=""><span>下载原图<span/></ul><ul onclick="setBG(2)"><img src=""><span>设为壁纸<span/></ul></div>
+</div>
+
+</body>
+<script src="../../script/apicloud/av-min.js"></script>
+<script src="../../script/beaster.js"></script>
+<script type="text/javascript" src="../../script/sjcc_main.js"></script>
+<script src="../../script/apicloud/realtime.browser.min.js"></script>
+<script type="text/javascript" src="../../script/swiper.min.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-main-3.4.1.js"></script>
+
+<script type="text/javascript">
+var User={name:"",pass:"",type:"3.jpeg",userNet:{}};
+
+var img = [];
+// --------------------------------------------------------------------
+  apiready = function()
+  {
+    $(document).ready(function(){
+      $("body").height(api.winHeight);
+      $("body").width(api.winWidth);
+      initPage();
+      console.log(User["type"]);
+      updateHtmls(User["type"]);
+      setBG(2);
+    });
+
+
+  };
+
+   updateHtmls=function(img)
+   {
+    $("#main").css("background-image","url("+img+")");
+   }
+
+
+</script>
+
+</html>

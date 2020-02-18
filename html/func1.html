@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>我的奖励</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href=""/ id="css">
+      <style>
+        body{
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          z-index:1;
+        }
+        #main{
+          width: 100%;
+          height: 100%;
+        }
+        #header{
+          width: 100%;
+          height: 55px;
+          margin-bottom: 8px;
+        }
+        .return{
+          height: 55px;
+          width: 20%;
+          background: url(../image/icon/back.png) no-repeat 15px 15px;
+          background-size: auto 25px;
+          float: left;
+        }
+        #header span{
+          width: 60%;
+          text-align: center;
+          color: #ffffff;
+          line-height:55px;
+          float: left;
+        }
+        .box{
+          width: 94%;
+          height: 95px;
+          background-color: #ffffff;
+          margin: 0 auto;
+          border-radius:3px;
+          margin-bottom: 8px;
+        }
+        img{
+          width: 75px;
+          margin: 10px 10px;
+          float: left;
+        }
+        .box_1{
+          width: 150px;
+          float: left;
+        }
+        .box_1 span:nth-child(1){
+          font-size: 14px;
+          color: #000000;
+          margin-top: 14px;
+        }
+        .box_1 span:nth-child(2){
+          font-size: 11px;
+          color: #A9A9A9;
+          margin-top: 7px;
+        }
+        .box_1 span:nth-child(3){
+          font-size: 11px;
+          color: #808080;
+          margin-top: 15px;
+        }
+        .button{
+          width: 67px;
+          height: 26px;
+          background-color: #808080;
+          border-radius:13px;
+          float: right;
+          color: #ffffff;
+          line-height: 26px;
+          text-align: center;
+          font-size: 12px;
+          margin: 34.5px 10px 0 0;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div class="return" onclick="fanhui()"></div>
+        <span>我的奖励</span>
+      </div>
+      <div class="box">
+        <img src="../image/icon/yifu_1.png">
+        <div class="box_1">
+          <span>奈姆利洋装</span>
+          <span>拥有奈姆利信仰套装</span>
+          <span>进度：0/1</span>
+        </div>
+        <div class="button">
+          不可兑换
+        </div>
+      </div>
+      <div class="box">
+        <img src="../image/icon/yifu_2.png">
+        <div class="box_1">
+          <span>梦梦奈-水手服</span>
+          <span>累计消费超过100</span>
+          <span>进度：240/100</span>
+        </div>
+        <div class="button" style="background-color: #A9A9A9;">
+          已兑换
+        </div>
+      </div>
+      <div class="box">
+        <img src="../image/icon/yifu_3.png">
+        <div class="box_1">
+          <span>中秋特典-月兔</span>
+          <span>累计消费超过200</span>
+          <span>进度：240/200</span>
+        </div>
+        <div class="button" style="background-color: #FFD700;">
+          兑换
+        </div>
+      </div>
+      <div class="box">
+        <img src="../image/icon/yifu_4.png">
+        <div class="box_1">
+          <span>梦梦奈-电子精灵</span>
+          <span>累计消费超过500</span>
+          <span>进度：240/500</span>
+        </div>
+        <div class="button">
+          不可兑换
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript">
+    apiready = function(){
+      document.body.style.height=api.winHeight+"px";
+      $api.fixStatusBar( $api.dom('#header') );
+      var query = new AV.Query('_User');
+      query.get(currentUser.id).then(function (todo) {
+        jianCe(todo.get('background'));
+      });
+    };
+    var currentUser = AV.User.current();
+    var json = currentUser.toJSON();
+    function jianCe(background){
+      var obj = document.getElementById("css");
+      if(background == '自定义'){
+        console.log(background);
+        obj.setAttribute("href","../css/func_background_1.css");
+      }else {
+        console.log(background);
+        obj.setAttribute("href","../css/func_background_2.css");
+      }
+    }
+    function fanhui(){
+      api.closeWin();
+    }
+  </script>
+  </html>

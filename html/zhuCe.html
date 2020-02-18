@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>注册</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <style>
+        body{
+          width: 100%;
+          background-image: url("../image/backgroud1.png");
+          background-size: cover;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          z-index:1;
+        }
+        body:after{
+          content: "";
+          width:100%;
+          height:100%;
+          position: absolute;
+          left:0;
+          top:0;
+          background: inherit;
+          filter: blur(3px);
+          z-index:-1;
+        }
+        #main{
+          width: 100%;
+          text-align: center;
+        }
+        img{
+          margin-top: 40px;
+          width: 40%;
+        }
+        #fangShi{
+          width: 80%;
+          height: 30px;
+          margin: 0 auto;
+        }
+        #fangShi li{
+          width: 50%;
+          height: 100%;
+          float: left;
+          text-align: center;
+          color: #ffffff;
+          font-size: 14px;
+        }
+        #fangShi li:nth-child(1){border-bottom: 1px solid #ffffff; color: #ffffff;}
+        #fangShi li:nth-child(2){border-bottom: 1px solid #ffffff; color: #ffffff;}
+        #fangShi li:nth-child(1).active{border-bottom: 1px solid #E94F67; color: #E94F67;}
+        #fangShi li:nth-child(2).active{border-bottom: 1px solid #E94F67; color: #E94F67;}
+        .box{
+          width: 80%;
+          height: 243px;
+          border:  1px solid #ffffff;
+          border-radius: 7px;
+          margin: 12px auto;
+        }
+        .box ul{
+          height: 100%;
+          width: 94%;
+          margin: 0 auto;
+        }
+        .box ul li{
+          width: 100%;
+          height: 40px;
+          background: url() no-repeat 5px 13px;
+          background-size: 18px auto;
+        }
+        .box ul li:nth-child(1){ background-image: url(../image/icon/text2.png); border-bottom: 0.5px solid rgba(255,255,255,0.2);}
+        .box ul li:nth-child(2){ background-image: url(../image/icon/text1.png); border-bottom: 0.5px solid rgba(255,255,255,0.2);}
+        .box ul li:nth-child(3){ background-image: url(../image/icon/des.png); border-bottom: 0.5px solid rgba(255,255,255,0.2);}
+        .box ul li:nth-child(4){ background-image: url(../image/icon/pass.png); border-bottom: 0.5px solid rgba(255,255,255,0.2);}
+        .box ul li:nth-child(5){ background-image: url(../image/icon/pass.png); border-bottom: 0.5px solid rgba(255,255,255,0.2);}
+        .box ul li:nth-child(6){ background-image: url(../image/icon/des.png);}
+        input{
+          height: 100%;
+          width: 85%;
+          color: #ffffff;
+          margin-left: 12%;
+          font-size: 14px;
+          outline:0;
+        }
+        input::-webkit-input-placeholder{
+          color:#ffffff;
+        }
+        #Button{
+          width: 80%;
+          height: 40px;
+          margin: 20px auto;
+          background-color: #E94F67;
+          color: #ffffff;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 7px;
+        }
+        span{
+          width: 100%;
+          color: #ffffff;
+          position: absolute;
+          bottom: 10px;
+          left: 0;
+          text-align: center;
+          font-size: 13px;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+      <img src="../image/icon/loginIcon.png">
+      <ul id="fangShi">
+        <li class="active" onclick="xuanZe(this)">手机号</li>
+        <li onclick="xuanZe(this)">邮箱</li>
+      </ul>
+      <div class="box">
+        <ul>
+          <li><input id="user" type="text" name="" value="" placeholder="请输入手机号码"></li>
+          <li><input type="text" name="" value="" placeholder="请输入验证码"></li>
+          <li><input id="name" type="text" name="" value="" placeholder="请输入用户ID(4-12个字符或汉字2-6个)"></li>
+          <li><input id="password_1" type="password" name="" value="" placeholder="请输入密码(8到18位数字、字母或下划线)"></li>
+          <li><input id="password_2" type="password" name="" value="" placeholder="请重复一遍密码"></li>
+          <li><input type="text" name="" value="" placeholder="如果有邀请码要记得填写哦"></li>
+        </ul>
+      </div>
+      <div id="Button" onclick="zhuCe()">注册</div>
+      <span onclick="out()">暂不注册</span>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        document.body.style.height=api.winHeight+"px";
+        $api.fixStatusBar( $api.dom('#main') );
+      };
+      function xuanZe(tag){
+        if( tag == $api.dom('#fangShi li.active') )return;
+        var xuanZe = $api.domAll('#fangShi li');
+        var index = 0;
+        for(var i=0; i<xuanZe.length; i++){
+          if(tag == xuanZe[i]){
+            $api.addCls( xuanZe[i], 'active');
+            index = i;
+          }else {
+            $api.removeCls(xuanZe[i], 'active');
+          }
+        }
+        if(index == 0){
+          document.getElementById("user").setAttribute("placeholder","请输入手机号码");
+        }else {
+          document.getElementById("user").setAttribute("placeholder","请输入可用邮箱");
+        }
+      }
+      function zhuCe(){
+        var ff = document.getElementById("user").placeholder;
+        var userId = document.getElementById("user").value;
+        var password_1 = document.getElementById("password_1").value;
+        var password_2 = document.getElementById("password_2").value;
+        var name = document.getElementById("name").value;
+        if(userId != '' && password_1 != '' && name != ''){
+          if(password_1 == password_2){
+            var user = new AV.User();
+            if(ff == '请输入手机号码'){
+              console.log('用手机注册');
+              user.setUsername(userId);
+              user.setPassword(password_1);
+              // user.setMobilePhoneNumber(userId);
+              user.set('name', name);
+              user.signUp().then(function (user) {
+                console.log('注册成功。objectId：' + user.id);
+                alert('注册成功');
+                api.closeWin();
+              }, function (error) {
+                alert('用户名已存在');
+              });
+            }else {
+              console.log('用邮箱注册');
+              user.setUsername(userId);
+              user.setPassword(password_1);
+              // user.setEmail(userId);
+              user.set('name', name);
+              user.signUp().then(function (user) {
+                console.log('注册成功。objectId：' + user.id);
+                alert('注册成功');
+                api.closeWin();
+              }, function (error) {
+                alert('用户名已存在');
+              });
+            }
+          }else {
+            alert('两次密码不一致！');
+          }
+        }else {
+          alert('请将信息补充完整！');
+        }
+      }
+      function out(){
+        api.closeWin();
+      }
+  </script>
+  </html>

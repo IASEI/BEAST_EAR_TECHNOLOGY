@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href=""/ id="css">
+      <style>
+          html,body{
+            background-color: rgba(0, 0, 0, 0);
+          }
+          .box{
+            width: 100%;
+            margin-bottom: 8px;
+          }
+          .color{
+            height: 22px;
+            width: 4px;
+            margin-top: 8px;
+            background-color: #E94F67;
+            float: left;
+          }
+          .box_right{
+            width: 96%;
+            float: right;
+          }
+          .box_head{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            margin-top: 4px;
+          }
+          .main_1 li{
+            height: 35px;
+            width: 33%;
+            float: left;
+            line-height: 35px;
+            font-size: 14px;
+          }
+          .main_1 li span{
+            margin-left: 20px;
+          }
+          .main_2{
+            width: 100%;
+            height: 180px;
+          }
+          .main_3{
+            width: 100%;
+          }
+          .main_3 div{
+            height: 90px;
+            width: 90px;
+            border: 0.5px solid #ffffff;
+            margin: 20px 18px 20px 2px;
+            background: url(../image/icon/xiangji.png) no-repeat center 20px;
+            background-size: auto 30px;
+          }
+          .main_3 span{
+            color: #A9A9A9;
+            font-size: 11px;
+            text-align: center;
+            margin-top: 60px;
+            width: 100%;
+          }
+          .main_4 li{
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            font-size: 14px;
+          }
+          .main_5 li{
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            font-size: 14px;
+          }
+      </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="color"></div>
+      <div class="box_right">
+        <div class="box_head">
+          反馈建议
+        </div>
+        <div class="main_1">
+          <ul>
+            <li><span>提Bug</span></li>
+            <li><span>提建议</span></li>
+            <li><span>说想法</span></li>
+          </ul>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+    <div class="box">
+      <div class="color"></div>
+      <div class="box_right">
+        <div class="box_head">
+          反馈内容
+        </div>
+        <div class="main_2">
+
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+    <div class="box">
+      <div class="color"></div>
+      <div class="box_right">
+        <div class="box_head">
+          添加附件
+        </div>
+        <div class="main_3">
+          <div>
+            <span>照片/视频</span>
+          </div>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+    <div class="box">
+      <div class="color"></div>
+      <div class="box_right">
+        <div class="box_head">
+          联系方式
+        </div>
+        <div class="main_4">
+          <ul>
+            <li>
+              QQ
+            </li>
+            <li>
+              手机
+            </li>
+            <li>
+              邮箱
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+    <div class="box">
+      <div class="color"></div>
+      <div class="box_right">
+        <div class="box_head">
+          更多信息（选填）
+        </div>
+        <div class="main_5">
+          <ul>
+            <li>
+              手机型号
+            </li>
+            <li>
+              模块
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var query = new AV.Query('_User');
+        query.get(currentUser.id).then(function (todo) {
+          jianCe(todo.get('background'));
+        });
+      };
+      var currentUser = AV.User.current();
+      var json = currentUser.toJSON();
+      function jianCe(background){
+        var obj = document.getElementById("css");
+        if(background == '自定义'){
+          console.log(background);
+          obj.setAttribute("href","../css/func_background_3.css");
+        }else {
+          console.log(background);
+          obj.setAttribute("href","../css/func_background_4.css");
+        }
+      }
+  </script>
+  </html>

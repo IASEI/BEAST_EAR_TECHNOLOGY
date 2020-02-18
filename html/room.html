@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>房间</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <style>
+        body{
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          z-index:1;
+        }
+        #beiJing{
+          background-image: url("../image/backgroud1.png");
+          background-size: cover;
+          position: fixed;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          z-index: -1;
+        }
+        #beiJing:after{
+          content: "";
+          width:100%;
+          height:100%;
+          position: fixed;
+          top: 0;
+          background: inherit;
+          filter: blur(3px);
+          z-index:-1;
+        }
+        #header{
+          background-color:rgba(255,255,255,0.4);
+          width: 100%;
+          height: 55px;
+          position: fixed;
+          top: 0;
+          z-index: 999;
+        }
+        .return{
+          height: 55px;
+          width: 20%;
+          background: url(../image/icon/back.png) no-repeat 15px 15px;
+          background-size: auto 25px;
+          float: left;
+        }
+        #header span{
+          width: 60%;
+          text-align: center;
+          color: #ffffff;
+          line-height:55px;
+          float: left;
+        }
+        .num{
+          width: 20%;
+          position: relative;
+          float: left;
+        }
+        .num span{
+          text-align: center;
+          color: #ffffff;
+          line-height:55px;
+          position: absolute;
+          right: 14px;
+        }
+        #foot{
+          width: 100%;
+          background-color: #f1f1f1;
+          position: fixed;
+          bottom: 0;
+          z-index: 999;
+        }
+        .input_box{
+          width: 70%;
+          background-color: #ffffff;
+          margin: 8px 2% 8px 4%;
+          border-radius:18px;
+          float: left;
+          padding: 8px 0;
+        }
+        .input_box1{
+          min-height: 20px;
+          position: relative;
+        }
+        .input_box pre{
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          width: 90%;
+          min-height: 20px;
+          font-size: 15px;
+          display: block;
+          visibility:hidden;
+          line-height: 20px;
+          margin: 0;
+        }
+        .input_box textarea{
+          height: 100%;
+          width: 90%;
+          margin-left: 5%;
+          line-height: 20px;
+          font-size: 15px;
+          outline:0;
+          resize: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        .fasong{
+          width: 20%;
+          height: 36px;
+          background-color: #E94F67;
+          border-radius:18px;
+          float: left;
+          text-align: center;
+          line-height: 36px;
+          color: #ffffff;
+          font-size: 15px;
+          position: absolute;
+          right: 4%;
+          bottom: 8px;
+        }
+        #liaoTian{
+          width: 100%;
+          float: left;
+        }
+        .main{
+          width: 100%;
+          float: left;
+          z-index: 999;
+        }
+        .box_1{
+          width: 80%;
+          margin: 10px 0 10px 2%;
+          z-index: 1;
+          float: left;
+        }
+        .headimg_1{
+          width: 20%;
+          float: left;
+        }
+        .headimg_1 img{
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          float: left;
+        }
+        .datas_1{
+          width: 80%;
+          float: left;
+        }
+        .name_1{
+          height: 20px;
+          line-height: 20px;
+          color: #696969;
+          font-size: 14px;
+        }
+        .text_1{
+          border: 2px solid #000000;
+          padding: 5px 10px;
+          border-radius: 10px;
+          white-space:normal;
+          word-break:break-all;
+          word-wrap:break-word;
+          background-color: #ffffff;
+          display:inline-block;
+          font-size: 15px;
+          float: left;
+        }
+        .box_2{
+          width: 80%;
+          margin: 10px 2% 10px 0;
+          z-index: 1;
+          float: right;
+        }
+        .headimg_2{
+          width: 20%;
+          float: right;
+        }
+        .headimg_2 img{
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          float: right;
+        }
+        .datas_2{
+          width: 80%;
+          float: right;
+        }
+        .name_2{
+          height: 20px;
+          line-height: 20px;
+          color: #696969;
+          font-size: 14px;
+          text-align: right;
+        }
+        .text_2{
+          border: 2px solid #000000;
+          padding: 5px 10px;
+          border-radius: 10px;
+          white-space:normal;
+          word-break:break-all;
+          word-wrap:break-word;
+          background-color: #ffffff;
+          display:inline-block;
+          font-size: 15px;
+          float: right;
+        }
+        .clear_div{
+          clear: both;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="header">
+      <div class="return" onclick="fanhui()"></div>
+      <span id="name">游戏</span>
+      <div class="num">
+        <span>人数</span>
+      </div>
+    </div>
+    <div id="foot">
+      <div class="input_box">
+        <div class="input_box1">
+          <pre class="pres"></pre>
+          <textarea id="shuRu" class="textareas" oninput="changeContent()"></textarea>
+        </div>
+      </div>
+      <div class="fasong" onclick="faSong()">
+        发 送
+      </div>
+    </div>
+    <div id="beiJing"></div>
+    <div id="liaoTian"></div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/realtime-browser.min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript" src="../script/main.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        document.body.style.height=api.winHeight-$api.dom('#header').offsetHeight+"px";
+        document.getElementById('liaoTian').style.marginTop=$api.dom('#header').offsetHeight+"px";
+        document.getElementById('liaoTian').style.marginBottom=$api.dom('#foot').offsetHeight+"px";
+        $api.fixStatusBar( $api.dom('#header') );
+        document.getElementById('name').innerHTML = api.winName;
+        denglu();
+      };
+      var sendHand;
+      function denglu(){
+        let id = api.pageParam.user;
+        sendHand = realtime.createIMClient(id).then(function(user) {
+          console.log(id+"登录成功");
+          user.on(Event.MESSAGE, function(message, conversation) {
+              jieShouXianShi(message);
+              var ele = document.body;
+              ele.scrollTop = ele.scrollHeight;
+          });
+          return user.getConversation(api.pageParam.room_id);
+        }).catch(console.error);
+        sendHand.then(function(conversation) {
+          return conversation.join();
+        }).then(function(conversation) {
+          console.log('加入成功');
+        }).catch(console.error.bind(console));
+        sendHand.then(function(conversation) {
+          conversation.count().then(function(count) {
+            console.log('在线人数：' + count);
+          }).catch(console.error.bind(console));
+        });
+      }
+      function changeContent(){
+        if($api.dom('#foot').offsetHeight <= 100)
+        {
+          var textarea = document.getElementsByClassName('textareas');
+          var pre = document.getElementsByClassName('pres');
+          pre[0].innerHTML = textarea[0].value;
+          document.getElementById('liaoTian').style.marginBottom=$api.dom('#foot').offsetHeight+"px";
+        }
+      }
+      function faSong(){
+        var text =document.getElementById('shuRu').value;
+        if(text != '')
+        {
+          console.log("发送");
+          document.getElementById('shuRu').value = '';
+          sendHand.then(function (conversation) {
+            return conversation.send(new AV.TextMessage(text), { priority: AV.MessagePriority.NORMAL });
+          }).then(function(message){
+            console.log('发送成功！');
+            faSongXianShi(text);
+            var ele = document.body;
+            ele.scrollTop = ele.scrollHeight;
+          });
+        }
+      }
+      function faSongXianShi(neiRong){
+        var liaoTian = document.getElementById('liaoTian');
+        var main = document.createElement("div");
+        var box = document.createElement("div");
+        var headimg = document.createElement("div");
+        var img = document.createElement("img");
+        var datas = document.createElement("div");
+        var name = document.createElement("p");
+        var text = document.createElement("div");
+        var clear = document.createElement("div");
+        main.className = 'main';
+        box.className = 'box_2';
+        headimg.className = 'headimg_2';
+        datas.className = 'datas_2';
+        name.className = 'name_2';
+        text.className = 'text_2';
+        clear.className = 'clear_div_2';
+        liaoTian.appendChild(main);
+        main.appendChild(box);
+        box.appendChild(headimg);
+        box.appendChild(datas);
+        box.appendChild(clear);
+        headimg.appendChild(img);
+        datas.appendChild(name);
+        datas.appendChild(text);
+        var currentUser = AV.User.current();
+        var json = currentUser.toJSON();
+        img.src = json['headImg'];
+        name.innerHTML = json['name'];
+        text.innerHTML = neiRong;
+      }
+      function jieShouXianShi(neiRong){
+        var liaoTian = document.getElementById('liaoTian');
+        var main = document.createElement("div");
+        var box = document.createElement("div");
+        var headimg = document.createElement("div");
+        var img = document.createElement("img");
+        var datas = document.createElement("div");
+        var name = document.createElement("p");
+        var text = document.createElement("div");
+        var clear = document.createElement("div");
+        main.className = 'main';
+        box.className = 'box_1';
+        headimg.className = 'headimg_1';
+        datas.className = 'datas_1';
+        name.className = 'name_1';
+        text.className = 'text_1';
+        clear.className = 'clear_div_1';
+        liaoTian.appendChild(main);
+        main.appendChild(box);
+        box.appendChild(headimg);
+        box.appendChild(datas);
+        box.appendChild(clear);
+        headimg.appendChild(img);
+        datas.appendChild(name);
+        datas.appendChild(text);
+        var query = new AV.Query('_User');
+        query.get(neiRong.from).then(function (todo) {
+          img.src = todo.get('headImg');
+          name.innerHTML = todo.get('name');
+        });
+        text.innerHTML = neiRong.text;
+      }
+      function fanhui(){
+        api.closeWin();
+      }
+  </script>
+  </html>

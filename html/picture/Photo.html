@@ -1,0 +1,122 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Hello APP</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/beaster.css" />
+
+  <style>
+    .my_title{width: 100%;height: 80px;margin-bottom: 12px;}
+    .my_title div{float: left;margin-top: 45px;}
+    .my_title div:nth-child(1){width: 30%;}
+    .my_title div:nth-child(1) span{margin-left: 10px;color: #fff;font-size: 20px;}
+    .my_title div:nth-child(2){width: 40%;padding-top: 0px;height: 25px;float: left;text-align: center;color: #fff;}
+    .my_title div:nth-child(3){width: 30%;}
+    .my_title img{float: left;margin: 0px 0px 0px 20px;height: 22px;border: 1px solid #fff;}
+
+    .signCard{margin: 0px 0px;height: 350px;border-radius: 5px;margin-bottom: 30px;width: 100%;}
+    .signCard p{width: 100%;height: 20px;line-height: 20px;color: #fff;margin: 5px 0px;font-size: 14px;}
+    .signCard p span:nth-child(1){margin-left: 10px;}
+    .signCard p span:nth-child(2){margin-right: 10px;float: right;}
+    .signCard div:nth-child(2){width: 100%;float: left;height: 200px;margin: 4px 0px;}
+    .signCard div:nth-child(3){width: 100%;float: left;height: 120px;margin: 4px 0px;}
+    .signCard div:nth-child(2) ul{width: 48%;height: 100%;margin: 0px 1%;float: left;background:url("../../image/test000.png");background-size: cover;}
+    .signCard div:nth-child(3) ul{width: 31.3%;height: 100%;margin: 0px 1%;float: left;background:url("http://lc-RAF1Y8dU.cn-n1.lcfile.com/3dce2e02e07cd06db7c3.jpeg");background-size: cover;}
+    .signCard div:nth-child(2) ul p{margin-top: 180px;}
+    .signCard div:nth-child(3) ul p{margin-top: 100px;}
+    .signCard div ul p{float: left;}
+
+    .sro{width: 100%;position: absolute;top:80px; bottom: 0px;overflow-y: auto;}
+    </style>
+</head>
+
+<body>
+<div class="bg_color_blur"></div>
+<div id="main">
+<!-- 标题 -->
+<div class="my_title bg_color_transparent">
+  <div></div>
+  <div>壁纸库</div>
+  <div></div>
+</div>
+<div class="sro">
+  <div class="signCard">
+    <p class="BorderLeft"><span>专辑列表</span><span>查看更多</span></p>
+    <div>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','wan')" style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/dafef3b6ee38d491bbc7.jpeg')"><p>次世代</p></ul>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','sha')" style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/ef096dde68d040d5f1db.jpeg')"><p>游戏</p></ul>
+    </div>
+    <div>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','ni')" style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/f8c7f613c17d88b394d0.jpeg')"><p>宝石之国</p></ul>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','baoshi' style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/b53996c68739bfa9795f.jpeg')")"><p>zero2</p></ul>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','zero')" style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/a7a405035f26b8a3220a.jpeg')"><p>尼尔</p></ul>
+    </div>
+
+  </div>
+
+  <div class="signCard">
+    <p class="BorderLeft"><span>专辑列表</span><span>查看更多</span></p>
+    <div>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','wan')" style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/f8c7f613c17d88b394d0.jpeg')"><p>杀戮</p></ul>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','sha')" style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/f980a4aab1b9c786890b.jpeg')"><p>心里</p></ul>
+    </div>
+    <div>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','ni')" style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/f8c7f613c17d88b394d0.jpeg')"><p>CG</p></ul>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','baoshi' style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/61b79dea0b8b111f609c.jpeg')")"><p>人物</p></ul>
+    <ul onclick="RunWinPage('picturelist','./pictureList.html','zero')" style="background-image:url('http://lc-RAF1Y8dU.cn-n1.lcfile.com/e13bce39b31a3c41a494.jpeg')"><p>角色</p></ul>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+</body>
+
+<script src="../../script/apicloud/av-min.js"></script>
+<script type="text/javascript" src="../../script/sjcc_main.js"></script>
+<script type="text/javascript" src="../../script/beaster.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-main-3.4.1.js"></script>
+<script type="text/javascript">
+var User={name:"",pass:"",type:"3.jpeg",userNet:{}};
+
+  apiready = function()
+  {
+    $(document).ready(function(){
+      $("body").height(api.winHeight);
+      $("body").width(api.winWidth);
+      setBG(2);
+    });
+
+
+  };
+
+  RunWinPage=function(name,url,type){
+    User['type']=type;
+    api.openWin({
+         name: name,
+         url: url,
+         pageParam:{User:User},
+         rect: {
+              x: 0,
+              y: 0,
+              w: api.winWidth,
+              h: api.winHeight
+
+          },
+         bounces: false,
+         bgColor: 'rgba(0,0,0,0)',
+         vScrollBarEnabled: true,
+         hScrollBarEnabled: true
+     });
+  }
+
+</script>
+
+</html>

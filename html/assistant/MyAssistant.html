@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+  <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+  <title>Hello APP</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/beaster.css" />
+  <style>
+
+    .my_title{width: 100%;height: 84px;margin-bottom: 8px;}
+    .my_title div{width: 100%;margin-top: 45px;height: 25px;float: left;text-align: center;color: #fff;}
+    .my_title div img{float: left;margin-left: 20px;height: 100%;}
+
+    .assistant{width: 100%;height: 140px;}
+    .name_info{    height: 100%;    width: 108px;    float: left;}
+    .name_info p{width: 100%;height: 20px;font-size: 14px;padding: 0px 4px;margin: 0px;color: #fff;}
+    .name_info img{border: 1px solid #fff;width: 90px;height: 114px;margin-left:8px;border-radius: 5px;}
+    .data{margin-top: 10px;width: 100%;height: 320px;  }
+    .data_title{width: 100%;height: 18px;text-align: left;line-height: 18px;font-size: 14px;margin-bottom: 8px;color: #fff;}
+    .date_info{height: 140px;float: left;width: 70%;color: #fff;font-size: 13px;}
+    .date_info ul{height: 22px;line-height: 100%;}
+    .date_info ul:nth-child(1){text-align: right;}
+    .container_good {width: 100%;height: 15px;background-color: #ddd;overflow: hidden;border-radius: 10px;}
+    ._good {width: 0%; height: 100%;background-color: #fff;}
+    .container_generge {width: 70%;height: 15px;background-color: #ddd;overflow: hidden;border-radius: 10px;float: left;}
+    ._generge {width: 0%; height: 100%;background-color: #fff;}
+    .duihuan{width: 60px;height: 20px;margin-left: 20px;border-radius: 10px;line-height: 20px;text-align: center;float: left;}
+
+    #info{width: 100%;height: 290px;  }
+    #info ul{width: 100%;height: 40px;color: #fff;line-height: 40px;font-size: 14px;}
+    #info ul div{float:right;height: 100%;}
+    #info ul p{height: 100%;float: left;}
+    #info ul img{float: left;height: 20px;margin: 10px 5px;width: 20px;border-width: 0px;}
+    #info ul div p{text-align: right;float: left;margin-right: 10px;}
+    #info ul div img{float: right;height: 70%;width: 30px;}
+    #info hr{width: 100%;height: 0.5px;background-color: #888;}
+
+  </style>
+</head>
+
+<body>
+<div class="bg_color_blur"></div>
+<div id="main">
+<!-- 标题 -->
+  <div class="my_title bg_color_transparent">
+    <div><img src="../../image/icon/back.png"></img>我的助手</div>
+  </div>
+
+  <!-- 助手 -->
+  <div class="assistant bg_color_transparent" >
+    <div class="name_info">
+      <p class="BorderLeft">梦梦奈</p>
+      <img src="../../image/res/160_note_thumb_letter_14.png"></img>
+    </div>
+
+    <div class="date_info">
+      <ul>兑换规则</ul>
+      <ul>一级</ul>
+      <ul>好感度:<span id="G">0</span></ul>
+      <ul>
+        <div class="container_good">
+          <div class="_good"></div>
+        </div>
+      </ul>
+      <ul>能量值:<span id="E">0</span></ul>
+      <ul>
+        <div class="container_generge">
+          <div class="_generge"></div>
+        </div>
+        <div class="duihuan bg_color_pink" onclick="exchange()">兑换</div>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 数据 -->
+  <div class="data">
+    <div class="data_title BorderLeft">&nbsp;助手数据</div>
+    <div id="info" class="bg_color_transparent">
+      <ul><img src="../../image/icon/text7.png"></img><p>当前助手</p>   <div><p>梦梦来</p><img src="../../image/icon/font.png"></img></div></ul><hr/>
+      <ul onclick=""><img src="../../image/icon/text6.png"></img><p>服装</p>       <div><p>公式</p><img src="../../image/icon/font.png"></img></div></ul><hr/>
+      <ul onclick="openPage('dress','DressColor.html')"><img src="../../image/icon/text5.png"></img><p>服装颜色</p>   <div><p>默认</p><img src="../../image/icon/font.png"></img></div></ul><hr/>
+      <ul ><img src="../../image/icon/text4.png"></img><p>语音等级</p>   <div><p>一级</p><img src="../../image/icon/font.png"></img></div></ul><hr/>
+      <ul onclick="openPage('language','Language.html')"><img src="../../image/icon/text4.png"></img><p>语种</p>       <div><p>中文</p><img src="../../image/icon/font.png"></img></div></ul><hr/>
+      <ul><img src="../../image/icon/text3.png"></img><p>称呼</p>       <div><p>默认称呼</p><img src="../../image/icon/font.png"></img></div></ul><hr/>
+      <ul onclick="openPageWin('assistantSet','AssistantSet.html')"><img src="../../image/icon/set.png"></img><p>助手设置</p>   <div><p></p><img src="../../image/icon/font.png"></img></div></ul>
+    </div>
+  </div>
+</div>
+</body>
+<script src="../../script/apicloud/av-min.js"></script>
+<script type="text/javascript" src="../../script/sjcc_main.js"></script>
+<script src="../../script/apicloud/realtime.browser.min.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-main-3.4.1.js"></script>
+<script src="../../script/beaster.js"></script>
+<script type="text/javascript">
+var User={name:"",pass:"",type:"3.jpeg",userNet:{}};
+
+  apiready = function()
+  {
+    initPage();
+    updateHtml();
+    setBG(2);
+  };
+
+  function openPage(name,url)
+  {
+
+        api.openFrame({
+            name: name,
+            url: url,
+            rect: {
+                x: 0,
+                y: 0,
+                w: api.winWidth,
+                h: api.winHeight
+
+            },
+            bounces: true,
+            bgColor: "rgba(0,0,0,0)",
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+
+
+  }
+
+  function openPageWin(name,url)
+  {
+        api.openWin({
+            name: name,
+            url: url,
+            pageParam:{User:User},
+            rect: {
+                x: 0,
+                y: 0,
+                w: api.winWidth,
+                h: api.winHeight
+
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+            bgColor: 'bgcolor(0,0,0,0)',
+            vScrollBarEnabled: false,
+            hScrollBarEnabled: true
+        });
+
+
+  }
+
+  exchange=function(){
+    if(User["name"]=="")
+    {
+        return;
+    }
+    User["userNet"]["love"]+=User["userNet"]["energer"];
+    User["userNet"]["energer"]=0;
+    if(User["userNet"]["love"]>=1000)
+    {
+      User["userNet"]["level"]+=1;
+      User["userNet"]["love"]=0;
+    }
+
+    if(User["userNet"]["energer"]>=200)
+    {
+      User["userNet"]["energer"]=200;
+    }
+    updateHtml();
+    uploadDate();
+  }
+
+
+  updateHtml=function() {
+    $("#G").text(User["userNet"]["love"]);
+    $("#E").text(User["userNet"]["energer"]);
+    $("._good").width(User["userNet"]["love"]/1000*100+"%");
+    $("._generge").width(User["userNet"]["energer"]/200*100+"%");
+  }
+</script>
+
+</html>

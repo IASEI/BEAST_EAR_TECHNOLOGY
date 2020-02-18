@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>个人中心</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href=""/ id="css">
+      <style>
+          body{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index:1;
+          }
+          #main{
+            width: 100%;
+            height: 100%;
+          }
+          .return{
+            height: 55px;
+            width: 20%;
+            background: url(../image/icon/back.png) no-repeat 15px 15px;
+            background-size: auto 25px;
+            float: left;
+          }
+          #header span{
+            width: 60%;
+            text-align: center;
+            color: #ffffff;
+            line-height:55px;
+            float: left;
+          }
+          .save{
+            width: 20%;
+            position: relative;
+            float: left;
+          }
+          .save span{
+            text-align: center;
+            color: #ffffff;
+            line-height:55px;
+            position: absolute;
+            right: 14px;
+          }
+          .box{
+            margin-top: 9px;
+            width: 100%;
+            height: 171px;
+          }
+          ul{
+            width: 93%;
+            margin: 0 auto;
+          }
+          ul li{
+            width: 100%;
+            height: 42px;
+            background: url() no-repeat 1px 13px;
+            background-size: 18px auto;
+          }
+          #ul_1 li:nth-child(1){ background-image: url(../image/icon/des.png);}
+          #ul_1 li:nth-child(2){ background-image: url(../image/icon/regist_time.png);}
+          #ul_1 li:nth-child(3){ background-image: url(../image/icon/my_1.png);}
+          #ul_1 li:nth-child(4){ background-image: url(../image/icon/sist.png);}
+          #ul_2 li:nth-child(1){ background-image: url(../image/icon/sex.png);}
+          #ul_2 li:nth-child(2){ background-image: url(../image/icon/diqu.png);}
+          #ul_2 li:nth-child(3){ background-image: url(../image/icon/shenfen.png);}
+          #ul_2 li:nth-child(4){ background-image: url(../image/icon/brithday.png);}
+          #ul_3 li:nth-child(1){ background-image: url(../image/icon/opt_name.png);}
+          .box span{
+            height: 42px;
+            line-height:42px;
+            margin-left: 25px;
+            font-size: 15px;
+          }
+          .right{
+            height: 100%;
+            width: 20px;
+            background: url(../image/res/832_s1.png) no-repeat 0 10px;
+            background-size: auto 24px;
+            float: right;
+          }
+          .data{
+            height: 42px;
+            line-height:42px;
+            font-size: 15px;
+            float: right;
+            margin-right: 8px;
+          }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div class="return" onclick="fanhui()"></div>
+        <span>个人信息</span>
+        <div class="save">
+          <span>保存</span>
+        </div>
+      </div>
+      <div class="box">
+        <ul id="ul_1">
+          <li>
+            <span>桌面名称</span>
+            <div class="right"></div>
+            <div class="data">
+              咪嗷喵
+            </div>
+          </li>
+          <li>
+            <span>注册时间</span>
+            <div style="height: 100%; width: 20px; float: right"></div>
+            <div class="data">
+              2016-12-10
+            </div>
+          </li>
+          <li>
+            <span>我的头衔</span>
+            <div class="right"></div>
+            <div class="data">
+
+            </div>
+          </li>
+          <li>
+            <span>当前助手</span>
+            <div class="right"></div>
+            <div class="data">
+              梦梦奈
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="box">
+        <ul id="ul_2">
+          <li>
+            <span>性别</span>
+            <div class="right"></div>
+            <div class="data">
+              男
+            </div>
+          </li>
+          <li>
+            <span>地区</span>
+            <div class="right"></div>
+            <div class="data">
+              成都
+            </div>
+          </li>
+          <li>
+            <span>身份</span>
+            <div class="right"></div>
+            <div class="data">
+              自由业
+            </div>
+          </li>
+          <li>
+            <span>生日</span>
+            <div class="right"></div>
+            <div class="data">
+              1999-1-23
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="box" style="height: 180px">
+        <ul id="ul_3">
+          <li>
+            <span>个人简介</span>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        document.body.style.height=api.winHeight+"px";
+        $api.fixStatusBar( $api.dom('#header') );
+        var query = new AV.Query('_User');
+        query.get(currentUser.id).then(function (todo) {
+          jianCe(todo.get('background'));
+        });
+      };
+      var currentUser = AV.User.current();
+      var json = currentUser.toJSON();
+      function jianCe(background){
+        var obj = document.getElementById("css");
+        if(background == '自定义'){
+          console.log(background);
+          obj.setAttribute("href","../css/func_background_1.css");
+        }else {
+          console.log(background);
+          obj.setAttribute("href","../css/func_background_2.css");
+        }
+      }
+      function fanhui(){
+        api.closeWin();
+      }
+  </script>
+  </html>

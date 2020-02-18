@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>邀请好友</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href=""/ id="css">
+      <style>
+        body{
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          z-index:1;
+        }
+        #main{
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+        #header{
+          width: 100%;
+          height: 55px;
+          margin-bottom: 9px;
+        }
+        .return{
+          height: 55px;
+          width: 20%;
+          background: url(../image/icon/back.png) no-repeat 15px 15px;
+          background-size: auto 25px;
+          float: left;
+        }
+        #header span{
+          width: 60%;
+          text-align: center;
+          color: #ffffff;
+          line-height:55px;
+          float: left;
+        }
+        .box{
+          margin-bottom: 10px;
+          width: 95%;
+          height: 125px;
+          border-radius:7px;
+          margin: 0 auto;
+        }
+        .box_1_1{
+          width: 95%;
+          height: 100%;
+          margin: 0 auto;
+        }
+        .box_head{
+          width: 100%;
+          height: 39px;
+        }
+        .left{
+          height: 39px;
+          line-height: 39px;
+          text-align: center;
+          font-size: 14px;
+          margin-left: 5px;
+        }
+        .right{
+          height: 39px;
+          line-height: 39px;
+          text-align: center;
+          font-size: 14px;
+          float: right;
+        }
+        .box_footer{
+          width: 98%;
+          height: 40px;
+          margin: 15px auto;
+          font-size: 12px;
+        }
+        .button_1{
+          background-color: #E94F67;
+          height: 30px;
+          width: 110px;
+          margin: 0 auto;
+          border-radius:15px;
+          line-height: 30px;
+          color: #ffffff;
+          font-size: 14px;
+          text-align: center;
+        }
+        .jiangli{
+          width: 100%;
+          height: 405px;
+          position: absolute;
+          bottom: 0;
+        }
+        .jiangli_head{
+          width: 100%;
+          height: 39px;
+        }
+        .color{
+          height: 22px;
+          width: 4px;
+          margin-top: 8px;
+          background-color: #E94F67;
+          float: left;
+        }
+        .jiangli_head_box{
+          width: 95%;
+          margin: 0 auto;
+        }
+        ul{
+          width: 95%;
+          margin: 0 auto;
+        }
+        li{
+          width: 100%;
+          height: 58px;
+          background: url() no-repeat 1px 13px;
+          background-size: 18px auto;
+        }
+        ul li:nth-child(1){ background-image: url(../image/icon/phone.png);}
+        ul li:nth-child(2){ background-image: url(../image/icon/phone.png);}
+        ul li:nth-child(3){ background-image: url(../image/icon/phone.png);}
+        .box_3{
+          height: 100%;
+          width: 70px;
+          margin-left: 65px;
+          float: left;
+        }
+        .name{
+          font-size: 12px;
+          margin-top: 15px;
+        }
+        .num{
+          font-size: 11px;
+          color: #A9A9A9;
+          margin-top: 6px;
+        }
+        .button_2{
+          background-color: #E94F67;
+          height: 24px;
+          width: 90px;
+          border-radius:12px;
+          line-height: 24px;
+          color: #ffffff;
+          font-size: 13px;
+          text-align: center;
+          float: right;
+          margin-top: 17px;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div class="return" onclick="fanhui()"></div>
+        <span>邀请好友</span>
+      </div>
+      <div class="box">
+        <div class="box_1_1">
+          <div class="box_head">
+            <span class="left">活动说明</span>
+            <span class="right">个</span>
+            <span class="right" style="color: #E94F67">12</span>
+            <span class="right">本周剩余邀请码：</span>
+          </div>
+          <div class="box_footer">
+            只要邀请码被使用，就会给阁下增加一次安利成功次数，成功次数达到一定数值可以领取各种各样的 活动礼品哦~
+          </div>
+          <div class="button_1">
+            生成邀请码
+          </div>
+        </div>
+      </div>
+      <div class="jiangli">
+        <div class="jiangli_head">
+          <div class="color"></div>
+          <div class="jiangli_head_box">
+            <span class="left">奖品</span>
+            <span class="right">次</span>
+            <span class="right" style="color: #E94F67">0</span>
+            <span class="right">当前安利成功次数：</span>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <div class="box_3">
+              <span class="name">青铜传教士</span>
+              <span class="num">5次</span>
+            </div>
+            <div class="button_2">领取</div>
+          </li>
+          <li>
+            <div class="box_3">
+              <span class="name">黄金传教士</span>
+              <span class="num">15次</span>
+            </div>
+            <div class="button_2">领取</div>
+          </li>
+          <li>
+            <div class="box_3">
+              <span class="name">钻石传教士</span>
+              <span class="num">30次</span>
+            </div>
+            <div class="button_2">领取</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript">
+    apiready = function(){
+      document.body.style.height=api.winHeight+"px";
+      $api.fixStatusBar( $api.dom('#header') );
+      var query = new AV.Query('_User');
+      query.get(currentUser.id).then(function (todo) {
+        jianCe(todo.get('background'));
+      });
+    };
+    var currentUser = AV.User.current();
+    var json = currentUser.toJSON();
+    function jianCe(background){
+      var obj = document.getElementById("css");
+      if(background == '自定义'){
+        console.log(background);
+        obj.setAttribute("href","../css/func_background_1.css");
+      }else {
+        console.log(background);
+        obj.setAttribute("href","../css/func_background_2.css");
+      }
+    }
+    function fanhui(){
+      api.closeWin();
+    }
+  </script>
+  </html>

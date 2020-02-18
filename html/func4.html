@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+      <title>自定义皮肤</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href=""/ id="css">
+      <style>
+        body{
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          z-index:1;
+        }
+        #main{
+          width: 100%;
+          height: 100%;
+        }
+        #header{
+          width: 100%;
+          height: 55px;
+          margin-bottom: 15px;
+        }
+        .return{
+          height: 55px;
+          width: 20%;
+          background: url(../image/icon/back.png) no-repeat 15px 15px;
+          background-size: auto 25px;
+          float: left;
+        }
+        #header span{
+          width: 60%;
+          text-align: center;
+          color: #ffffff;
+          line-height:55px;
+          float: left;
+        }
+        .box_0{
+          width: 83%;
+          height: 280px;
+          margin: 40px auto;
+        }
+        .box_1_2 img{
+          height: 250px;
+          margin-bottom: 20px;
+        }
+        .box_2_1{
+          margin: 0 auto;
+          font-size: 14px;
+          height: 15px;
+          line-height: 15px;
+        }
+        .box_2_2{
+          width: 15px;
+          height: 15px;
+          border-radius:5px;
+          background-color: #a9a9a9;
+          float: left;
+          margin: 0 5px 0 30px;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">
+        <div class="return" onclick="fanhui()"></div>
+        <span>切换主题</span>
+      </div>
+      <div class="box_0">
+        <div class="box_1_2" style="float: left" onclick="gaiBian(this)">
+          <img src="../image/res/504_zy.png">
+          <div class="box_2_1">
+            <div class="box_2_2"></div>
+            默认主题
+          </div>
+        </div>
+        <div class="box_1_2" style="float: right" onclick="gaiBian(this)">
+          <img src="../image/res/503_zx.png">
+          <div class="box_2_1">
+            <div class="box_2_2"></div>
+            自定义主题
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/av-min.js"></script>
+  <script type="text/javascript" src="../script/sjcc_main.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        document.body.style.height=api.winHeight+"px";
+        $api.fixStatusBar( $api.dom('#header') );
+        var query = new AV.Query('_User');
+        query.get(currentUser.id).then(function (todo) {
+          jianCe(todo.get('background'));
+        });
+      };
+      var currentUser = AV.User.current();
+      var json = currentUser.toJSON();
+      function gaiBian(tag){
+        var box = document.getElementsByClassName("box_1_2");
+        if(tag == box[0]){
+          // console.log('默认');
+          var todo = AV.Object.createWithoutData('_User', currentUser.id);
+          todo.set('background', '默认');
+          todo.save();
+          todo.fetch().then(function (todo) {
+            window.location.reload();
+          });
+        }else {
+          // console.log('自定义');
+          var todo = AV.Object.createWithoutData('_User', currentUser.id);
+          todo.set('background', '自定义');
+          todo.save();
+          todo.fetch().then(function (todo) {
+            window.location.reload();
+          });
+        }
+      }
+      function jianCe(background){
+        var box = document.getElementsByClassName("box_2_2");
+        var obj = document.getElementById("css");
+        if(background == '默认'){
+          box[0].style.background="#F6647B";
+          obj.setAttribute("href","../css/func_background_2.css");
+        }else {
+          box[1].style.background="#F6647B";
+          obj.setAttribute("href","../css/func_background_1.css");
+        }
+      }
+      function fanhui(){
+        api.closeWin();
+      }
+  </script>
+  </html>
